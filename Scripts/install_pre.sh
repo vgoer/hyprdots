@@ -3,7 +3,8 @@
 #|--/ /-| Script to apply pre install configs |--/ /-|#
 #|-/ /--| Prasanth Rangan                     |-/ /--|#
 #|/ /---+-------------------------------------+/ /---|#
-
+# 预安装
+# 导入全局函数
 scrDir=$(dirname "$(realpath "$0")")
 source "${scrDir}/global_fn.sh"
 if [ $? -ne 0 ]; then
@@ -11,7 +12,7 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-# grub
+# 安装 grub
 if pkg_installed grub && [ -f /boot/grub/grub.cfg ]; then
     echo -e "\033[0;32m[BOOTLOADER]\033[0m detected // grub"
 
@@ -53,10 +54,9 @@ if pkg_installed grub && [ -f /boot/grub/grub.cfg ]; then
     fi
 fi
 
-# systemd-boot
-if pkg_installed systemd && nvidia_detect && [ $(bootctl status 2> /dev/null | awk '{if ($1 == "Product:") print $2}') == "systemd-boot" ]; then
+# 安装systemd-boot
+if pkg_installed systemd && nvidia_detect && [ "$(bootctl status 2> /dev/null | awk '{if ($1 == "Product:") print $2}')" = "systemd-boot" ]; then
     echo -e "\033[0;32m[BOOTLOADER]\033[0m detected // systemd-boot"
-
     if [ $(ls -l /boot/loader/entries/*.conf.t2.bkp 2> /dev/null | wc -l) -ne $(ls -l /boot/loader/entries/*.conf 2> /dev/null | wc -l) ]; then
         echo "nvidia detected, adding nvidia_drm.modeset=1 to boot option..."
         find /boot/loader/entries/ -type f -name "*.conf" | while read imgconf; do
@@ -69,7 +69,8 @@ if pkg_installed systemd && nvidia_detect && [ $(bootctl status 2> /dev/null | a
     fi
 fi
 
-# pacman
+
+# 安装pacman
 if [ -f /etc/pacman.conf ] && [ ! -f /etc/pacman.conf.t2.bkp ]; then
     echo -e "\033[0;32m[PACMAN]\033[0m adding extra spice to pacman..."
 
