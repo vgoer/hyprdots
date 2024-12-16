@@ -3,7 +3,7 @@
 #|--/ /-| Script to apply post install configs |--/ /-|#
 #|-/ /--| Prasanth Rangan                      |-/ /--|#
 #|/ /---+--------------------------------------+/ /---|#
-
+# 安装后脚本
 scrDir=$(dirname "$(realpath "$0")")
 source "${scrDir}/global_fn.sh"
 if [ $? -ne 0 ]; then
@@ -11,7 +11,7 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-# sddm
+# 安装sddm
 if pkg_installed sddm; then
 
     echo -e "\033[0;32m[DISPLAYMANAGER]\033[0m detected // sddm"
@@ -46,7 +46,7 @@ else
     echo -e "\033[0;33m[WARNING]\033[0m sddm is not installed..."
 fi
 
-# dolphin
+# 安装dolphin
 if pkg_installed dolphin && pkg_installed xdg-utils; then
 
     echo -e "\033[0;32m[FILEMANAGER]\033[0m detected // dolphin"
@@ -57,10 +57,10 @@ else
     echo -e "\033[0;33m[WARNING]\033[0m dolphin is not installed..."
 fi
 
-# shell
+# 安装shell
 "${scrDir}/restore_shl.sh"
 
-# flatpak
+# 安装flatpak 和 跨平台app https://flatpak.org/setup/
 if ! pkg_installed flatpak; then
 
     echo -e "\033[0;32m[FLATPAK]\033[0m flatpak application list..."
