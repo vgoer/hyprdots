@@ -1,0 +1,268 @@
+
+# █▄▀ █▀▀ █▄█ █▄▄ █ █▄░█ █▀▄ █ █▄░█ █▀▀ █▀
+# █░█ ██▄ ░█░ █▄█ █ █░▀█ █▄▀ █ █░▀█ █▄█ ▄█
+
+# See https://wiki.hyprland.org/Configuring/Keywords/
+#  &  https://wiki.hyprland.org/Configuring/Binds/
+
+# Main modifier
+$mainMod = Super # super / meta / windows key
+
+# Assign apps
+$term = kitty
+# $editor = code --ozone-platform-hint=auto --enable-wayland-ime
+$editor = code  --ozone-platform-hint=auto --enable-wayland-ime
+$cursor = cursor --ozone-platform-hint=wayland --enable-wayland-ime
+$file = dolphin
+$browser = firefox
+$google = google-chrome-stable --enable-features=UseOzonePlatform --ozone-platform-hint=wayland --enable-wayland-ime
+$typora = typora
+
+# Window/Session actions
+bindd = $mainMod+Shift, P,Color Picker , exec, hyprpicker -a # Pick color (Hex) >> clipboard# 
+bind = $mainMod, C, exec, $scrPath/dontkillsteam.sh # close focused window
+bind = Alt, F4, exec, $scrPath/dontkillsteam.sh # close focused window
+bind = $mainMod, Delete, exit, # kill hyprland session
+bind = $mainMod, W, togglefloating, # toggle the window between focus and float
+bind = $mainMod, G, togglegroup, # toggle the window between focus and group
+bind = Alt, Return, fullscreen, # toggle the window between focus and fullscreen
+bind = Alt SHIFT, Return, fullscreenstate, 0, 3 # window in fullscreen
+bind = $mainMod, L, exec, swaylock # launch lock screen
+bind = $mainMod Shift, L, exec, hyprlock # add hyprlock
+bind = $mainMod+Shift, F, exec, $scrPath/windowpin.sh # toggle pin on focused window
+bind = $mainMod, X, exec, $scrPath/logoutlaunch.sh # launch logout menu
+bind = Ctrl+Alt, W, exec, killall waybar || (env reload_flag=1 $scrPath/wbarconfgen.sh) # toggle waybar and reload config
+
+
+
+# goer
+bind = $CONTROL SHIFT, Q, exec, ~/shell/gitshell/sest # jietu
+bind = $CONTROL SHIFT, H, exec, ~/.config/hypr/scripts/sysmonlaunch.sh  # open htop/btop if installed or default to top (system monitor)
+bind = $CONTROL SHIFT, B, exec, ~/.config/hypr/scripts/btop.sh
+bind = $control SHIFT, U, exec, ~/.config/hypr/scripts/hack.sh
+bind = $control SHIFT, I, exec, ~/.config/hypr/scripts/pipes.sh
+bind = $control SHIFT, A, exec, ~/.config/hypr/scripts/hy_kitty.sh
+bind = $control SHIFT, S, exec, ~/.config/hypr/scripts/hy_kitty_cava.sh
+bind = $control SHIFT, X, exec, ~/.config/hypr/scripts/hy_kitty_cava_rand.sh
+bind = $control SHIFT, D, exec, ~/.config/hypr/scripts/hy_kitty_musicfox.sh
+bind = $control ALT, B, exec, ~/.config/hypr/scripts/hy_kitty_btop.sh
+bind = $control SHIFT, N, exec, ~/.config/hypr/scripts/hy_kitty_neofetch.sh
+bind = $control ALT, Q, exec, ~/.config/hypr/scripts/hy_kitty_waveterm.sh
+bind = $control SHIFT, K, exec, ~/.config/hypr/scripts/hy_goer_wskeys.sh    # goer key
+bind = $mainMod CTRL, W, overview:toggle # wrokspace overview
+bind = $mainMod ALT, W, hyprexpo:expo,toggle # workspace kde
+# bind = $mainMod ALT, W, animatefocused # mouse animate
+
+
+# pyprland adds
+bind = $mainMod SHIFT, Z, exec, pypr toggle term # toggles the "term" scratchpad visibility
+bind = $mainMod SHIFT, B, exec, ~/.config/hypr/scripts/hy_goer_toggle_monitors.sh # toggles the "term" scratchpad visibility
+bind = $mainMod SHIFT, O, exec, ~/.config/hypr/scripts/hy_goer_toggle_music.sh # toggles the "musicsss" scratchpad visibility
+bind = $mainMod ALT, Z, exec, pypr expose # exposes every window
+bind = $mainMod SHIFT, J, exec, pypr change_workspace -1 # alternative multi-monitor workspace switcher
+bind = $mainMod SHIFT, K, exec, pypr change_workspace +1 # alternative multi-monitor workspace switcher
+bind = $mainMod, N, exec, pypr toggle_special minimized # toggle a window from/to the "minimized" special workspace
+bind = $mainMod SHIFT, N, togglespecialworkspace, minimized # toggle the "minimized" special workspace visibility
+bind = $mainMod SHIFT, o, exec, pypr shift_monitors +1 # swaps workspaces between monitors
+bind = $mainMod SHIFT, M, exec, pypr zoom ++0.5 # zooms in the focused workspace
+bind = $mainMod, M, exec, pypr zoom # toggle zooming
+# 布局
+bind = $mainMod, I, exec, pypr layout_center toggle # toggle the layout
+## focus change keys
+bind = $mainMod, left, exec, pypr layout_center prev
+bind = $mainMod, right, exec, pypr layout_center next
+bind = $mainMod, up, exec, pypr layout_center prev2
+bind = $mainMod, down, exec, pypr layout_center next
+bind = $mainMod SHIFT, G,exec,pypr toggle spotify hyprctl dispatchbringactivetop
+# 特殊切换
+bind = $mainMod SHIFT, U, togglespecialworkspace, stash # toggles "stash" special workspace visibility
+bind = $mainMod, U, exec, pypr toggle_special stash # moves window to/from the "stash" workspace
+
+
+# my add
+bind = $mainMod ALT, F, exec, hyprctl dispatch workspaceopt allfloat # all float
+bind = $mainMod, H, exec, ~/.config/hypr/scripts/Git_KeyHints.sh # Small help file
+bind = $mainMod ALT, E, exec, ~/.config/hypr/scripts/Git_RofiEmoji.sh # launch rofi emoji
+bind = $mainMod ALT, L, exec, ~/.config/hypr/scripts/Git_ChangeLayout.sh # Toggle Master or Dwindle Layout
+bind = $mainMod SHIFT, G, exec, ~/.config/hypr/scripts/Git_RofiSearch.sh # Rofi Search
+# 关闭透明度
+bind = $mainMod ALT, O, exec, hyprctl setprop active opaque toggle # disable opacity to active window
+bind = $mainMod CTRL, R, exec, ~/.config/hypr/scripts/Git_RainbowBorders.sh # rainbow borders
+bind = $mainMod ALT, S, exec,  [float;size 800 600;center] smile # add smaile
+bind = $mainMod SHIFT, C, exec,  [float;center] gnome-calculator # add gnome-calculator
+bind = $mainMod ALT, R, exec, hyprctl, reload # reload hypr
+
+# 亮度
+bind = ,F11, exec, brightnessctl set 10%-
+bind = ,F12, exec, brightnessctl set 10%+
+
+# Application shortcuts
+bind = $mainMod, return, exec, $term  # open terminal
+bind = $mainMod CTRL, Return, exec, [float;size 800 600;center] $term # open float ter
+bind = $mainMod, E, exec,[float; size 800 600; center] $file # open file manager
+bind = $mainMod, D, exec, $editor # open vscode
+bind = $mainMod SHIFT, D, exec, [float; size 800 600; center] $cursor # open cursor
+bind = $mainMod, F, exec, $browser # launch web browser
+bind = $mainMod, Q, exec, $google # open google
+bind = $mainMod, T, exec, [float; size 800 600; center] $typora # open typora
+bind = $mainMod, N, exec, [float; size 800 600; center] $neovide # open neovide-astro
+bind = Ctrl+Shift, Escape, exec, $scrPath/sysmonlaunch.sh # launch system monitor (htop/btop or fallback to top)
+
+# Rofi menus
+bind = $mainMod, A, exec, pkill -x rofi || $scrPath/rofilaunch.sh d # launch application launcher
+bind = $mainMod, Tab, exec, pkill -x rofi || $scrPath/rofilaunch.sh w # launch window switcher
+bind = $mainMod+Shift, E, exec, pkill -x rofi || $scrPath/rofilaunch.sh f # launch file explorer
+
+# Audio control
+bindl  = , F8, exec, $scrPath/volumecontrol.sh -o m # toggle audio mute
+# bindel = , F10, exec, ~/.config/hypr/scripts/Git_Volume.sh --toggle-mic # increase volume
+bindel = , F9, exec, $scrPath/volumecontrol.sh -o d # decrease volume
+# bindel = , F10, exec, ~/.config/hypr/scripts/Git_Volume.sh --dec # increase volume
+bindel = , F10, exec, $scrPath/volumecontrol.sh -o i # increase volume
+# bindel = , F10, exec, ~/.config/hypr/scripts/Git_Volume.sh --inc # increase volume
+bindl  = , XF86AudioMute, exec, $scrPath/volumecontrol.sh -o m # toggle audio mute
+bindl  = , XF86AudioMicMute, exec, $scrPath/volumecontrol.sh -i m # toggle microphone mute
+bindel = , XF86AudioLowerVolume, exec, $scrPath/volumecontrol.sh -o d # decrease volume
+bindel = , XF86AudioRaiseVolume, exec, $scrPath/volumecontrol.sh -o i # increase volume
+
+# Media control
+bindl  = , XF86AudioPlay, exec, playerctl play-pause # toggle between media play and pause
+bindl  = , XF86AudioPause, exec, playerctl play-pause # toggle between media play and pause
+bindl  = , XF86AudioNext, exec, playerctl next # media next
+bindl  = , XF86AudioPrev, exec, playerctl previous # media previous
+
+# Brightness control
+bindel = , XF86MonBrightnessUp, exec, $scrPath/brightnesscontrol.sh i # increase brightness
+bindel = , XF86MonBrightnessDown, exec, $scrPath/brightnesscontrol.sh d # decrease brightness
+
+# Move between grouped windows
+bind = $mainMod CTRL , H, changegroupactive, b
+bind = $mainMod CTRL , L, changegroupactive, f
+
+# Screenshot/Screencapture
+bind = $mainMod, P, exec, $scrPath/screenshot.sh s # partial screenshot capture
+bind = $mainMod+Ctrl, P, exec, $scrPath/screenshot.sh sf # partial screenshot capture (frozen screen)
+bind = $mainMod+Alt, P, exec, $scrPath/screenshot.sh m # monitor screenshot capture
+bind = , Print, exec, $scrPath/screenshot.sh p # all monitors screenshot capture
+
+# Custom scripts
+bind = $mainMod+Alt, G, exec, $scrPath/gamemode.sh # disable hypr effects for gamemode
+bind = $mainMod+Alt, Right, exec, $scrPath/swwwallpaper.sh -n # next wallpaper
+bind = $mainMod+Alt, Left, exec, $scrPath/swwwallpaper.sh -p # previous wallpaper
+bind = $mainMod+Alt, Up, exec, $scrPath/wbarconfgen.sh n # next waybar mode
+bind = $mainMod+Alt, Down, exec, $scrPath/wbarconfgen.sh p # previous waybar mode
+bind = $mainMod+Shift, R, exec, pkill -x rofi || $scrPath/wallbashtoggle.sh -m # launch wallbash mode select menu
+bind = $mainMod+Shift, T, exec, pkill -x rofi || $scrPath/themeselect.sh # launch theme select menu
+bind = $mainMod+Shift, A, exec, pkill -x rofi || $scrPath/rofiselect.sh # launch select menu
+bind = $mainMod+Shift, X, exec, pkill -x rofi || $scrPath/themestyle.sh # launch theme style select menu
+bind = $mainMod+Shift, W, exec, pkill -x rofi || $scrPath/swwwallselect.sh # launch wallpaper select menu
+bind = $mainMod, V, exec, pkill -x rofi || $scrPath/cliphist.sh c # launch clipboard
+bind = $mainMod+Shift, V, exec, pkill -x rofi || $scrPath/cliphist.sh # launch clipboard Manager
+bind = $mainMod, K, exec, $scrPath/keyboardswitch.sh # switch keyboard layout
+bind = $mainMod ALT, K, exec, pkill -x rofi || $scrPath/keybinds_hint.sh c # launch keybinds hint
+bind = $mainMod+Alt, A, exec, pkill -x rofi || $scrPath/animations.sh # launch animations Manager
+
+
+# Move/Change window focus
+bind = $mainMod, Left, movefocus, l
+bind = $mainMod, Right, movefocus, r
+bind = $mainMod, Up, movefocus, u
+bind = $mainMod, Down, movefocus, d
+bind = Alt, Tab, movefocus, d
+
+# Switch workspaces
+# bind = $mainMod, 1, split-workspace, 1
+# bind = $mainMod, 2, split-workspace, 2
+# bind = $mainMod, 3, split-workspace, 3
+# bind = $mainMod, 4, split-workspace, 4
+# bind = $mainMod, 5, split-workspace, 5
+bind = $mainMod, 1, workspace, 1
+bind = $mainMod, 2, workspace, 2
+bind = $mainMod, 3, workspace, 3
+bind = $mainMod, 4, workspace, 4
+bind = $mainMod, 5, workspace, 5
+bind = $mainMod, 6, workspace, 6
+bind = $mainMod, 7, workspace, 7
+bind = $mainMod, 8, workspace, 8
+bind = $mainMod, 9, workspace, 9
+bind = $mainMod, 0, workspace, 10
+
+# Switch workspaces to a relative workspace
+bind = $mainMod+Ctrl, Right, workspace, r+1
+bind = $mainMod+Ctrl, Left, workspace, r-1
+
+# Move to the first empty workspace
+bind = $mainMod+Ctrl, Down, workspace, empty 
+
+# Resize windows
+binde = $mainMod+Shift, Right, resizeactive, 30 0
+binde = $mainMod+Shift, Left, resizeactive, -30 0
+binde = $mainMod+Shift, Up, resizeactive, 0 -30
+binde = $mainMod+Shift, Down, resizeactive, 0 30
+
+# Move focused window to a workspace
+bind = $mainMod+Shift, 1, movetoworkspace, 1
+bind = $mainMod+Shift, 2, movetoworkspace, 2
+bind = $mainMod+Shift, 3, movetoworkspace, 3
+bind = $mainMod+Shift, 4, movetoworkspace, 4
+bind = $mainMod+Shift, 5, movetoworkspace, 5
+bind = $mainMod+Shift, 6, movetoworkspace, 6
+bind = $mainMod+Shift, 7, movetoworkspace, 7
+bind = $mainMod+Shift, 8, movetoworkspace, 8
+bind = $mainMod+Shift, 9, movetoworkspace, 9
+bind = $mainMod+Shift, 0, movetoworkspace, 10
+
+# Move focused window to a relative workspace
+bind = $mainMod+Ctrl+Alt, Right, movetoworkspace, r+1
+bind = $mainMod+Ctrl+Alt, Left, movetoworkspace, r-1
+
+# Move active window around current workspace with mainMod + SHIFT + CTRL [←→↑↓]
+$moveactivewindow=grep -q "true" <<< $(hyprctl activewindow -j | jq -r .floating) && hyprctl dispatch moveactive
+binded = $mainMod SHIFT $CONTROL, left,Move activewindow to the right,exec, $moveactivewindow -30 0 || hyprctl dispatch movewindow l
+binded = $mainMod SHIFT $CONTROL, right,Move activewindow to the right,exec, $moveactivewindow 30 0 || hyprctl dispatch movewindow r
+binded = $mainMod SHIFT $CONTROL, up,Move activewindow to the right,exec, $moveactivewindow  0 -30 || hyprctl dispatch movewindow u
+binded = $mainMod SHIFT $CONTROL, down,Move activewindow to the right,exec, $moveactivewindow 0 30 || hyprctl dispatch movewindow d
+
+# Scroll through existing workspaces
+bind = $mainMod, mouse_down, workspace, e+1
+bind = $mainMod, mouse_up, workspace, e-1
+
+# Move/Resize focused window
+bindm = $mainMod, mouse:272, movewindow
+bindm = $mainMod, mouse:273, resizewindow
+bindm = $mainMod, Z, movewindow
+bindm = $mainMod, R, resizewindow
+bind = $mainMod, M, pseudo
+
+# Move/Switch to special workspace (scratchpad)
+bind = $mainMod, S, movetoworkspacesilent, special
+bind = $mainMod SHIFT, S, togglespecialworkspace,
+
+# Toggle focused window split
+bind = $mainMod, J, togglesplit
+
+# Move focused window to a workspace silently
+bind = $mainMod+Alt, 1, movetoworkspacesilent, 1
+bind = $mainMod+Alt, 2, movetoworkspacesilent, 2
+bind = $mainMod+Alt, 3, movetoworkspacesilent, 3
+bind = $mainMod+Alt, 4, movetoworkspacesilent, 4
+bind = $mainMod+Alt, 5, movetoworkspacesilent, 5
+bind = $mainMod+Alt, 6, movetoworkspacesilent, 6
+bind = $mainMod+Alt, 7, movetoworkspacesilent, 7
+bind = $mainMod+Alt, 8, movetoworkspacesilent, 8
+bind = $mainMod+Alt, 9, movetoworkspacesilent, 9
+bind = $mainMod+Alt, 0, movetoworkspacesilent, 10
+
+# my add
+# move all window to a workspace silenty
+bind = $mainMod CTRL, 1, exec, ~/.config/hypr/scripts/Git_MoveTo.sh 1
+bind = $mainMod CTRL, 2, exec, ~/.config/hypr/scripts/Git_MoveTo.sh 2
+bind = $mainMod CTRL, 3, exec, ~/.config/hypr/scripts/Git_MoveTo.sh 3
+bind = $mainMod CTRL, 4, exec, ~/.config/hypr/scripts/Git_MoveTo.sh 4
+bind = $mainMod CTRL, 5, exec, ~/.config/hypr/scripts/Git_MoveTo.sh 5
+bind = $mainMod CTRL, 6, exec, ~/.config/hypr/scripts/Git_MoveTo.sh 6
+bind = $mainMod CTRL, 7, exec, ~/.config/hypr/scripts/Git_MoveTo.sh 7
+bind = $mainMod CTRL, 8, exec, ~/.config/hypr/scripts/Git_MoveTo.sh 8
+bind = $mainMod CTRL, 9, exec, ~/.config/hypr/scripts/Git_MoveTo.sh 9
+bind = $mainMod CTRL, 0, exec, ~/.config/hypr/scripts/Git_MoveTo.sh 10
+
