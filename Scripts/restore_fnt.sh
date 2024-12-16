@@ -3,7 +3,8 @@
 #|--/ /-| Script to extract fonts and themes |--/ /-|#
 #|-/ /--| Prasanth Rangan                    |-/ /--|#
 #|/ /---+------------------------------------+/ /---|#
-
+# 恢复字体和主题
+# 导入全局函数
 scrDir=$(dirname "$(realpath "$0")")
 source "${scrDir}/global_fn.sh"
 if [ $? -ne 0 ]; then
