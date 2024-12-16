@@ -21,6 +21,7 @@ EOF
 #--------------------------------#
 # import variables and functions #
 #--------------------------------#
+# 导入全局函数
 scrDir=$(dirname "$(realpath "$0")")
 source "${scrDir}/global_fn.sh"
 if [ $? -ne 0 ]; then
@@ -34,7 +35,11 @@ fi
 flg_Install=0
 flg_Restore=0
 flg_Service=0
-
+# 获取参数
+# i 只安装hyprland
+# d 全部安装
+# r 升级
+# s 开启服务
 while getopts idrs RunStep; do
     case $RunStep in
         i)  flg_Install=1 ;;
