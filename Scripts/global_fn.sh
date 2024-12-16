@@ -3,10 +3,10 @@
 #|--/ /-| Global functions |--/ /-|#
 #|-/ /--| Prasanth Rangan  |-/ /--|#
 #|/ /---+------------------+/ /---|#
+# 全局函数
 
 set -e
 
-# 全局函数
 scrDir="$(dirname "$(realpath "$0")")"
 cloneDir="$(dirname "${scrDir}")"
 confDir="${XDG_CONFIG_HOME:-$HOME/.config}"
