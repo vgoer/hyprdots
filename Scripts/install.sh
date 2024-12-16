@@ -3,6 +3,7 @@
 #|--/ /-| Main installation script |--/ /-|#
 #|-/ /--| Prasanth Rangan          |-/ /--|#
 #|/ /---+--------------------------+/ /---|#
+# 安装脚本
 
 cat << "EOF"
 
@@ -17,7 +18,6 @@ cat << "EOF"
 -------------------------------------------------
 
 EOF
-
 #--------------------------------#
 # import variables and functions #
 #--------------------------------#
@@ -64,6 +64,7 @@ fi
 #--------------------#
 # pre-install script #
 #--------------------#
+# 预安装
 if [ ${flg_Install} -eq 1 ] && [ ${flg_Restore} -eq 1 ]; then
     cat << "EOF"
                 _         _       _ _
@@ -80,6 +81,7 @@ fi
 #------------#
 # installing #
 #------------#
+# 安装
 if [ ${flg_Install} -eq 1 ]; then
     cat << "EOF"
 
@@ -94,6 +96,7 @@ EOF
     #----------------------#
     # prepare package list #
     #----------------------#
+    # 预安装包
     shift $((OPTIND - 1))
     cust_pkg=$1
     cp "${scrDir}/custom_hypr.lst" "${scrDir}/install_pkg.lst"
@@ -105,6 +108,7 @@ EOF
     #--------------------------------#
     # add nvidia drivers to the list #
     #--------------------------------#
+    # nvidia需要安装的包
     if nvidia_detect; then
         cat /usr/lib/modules/*/pkgbase | while read krnl; do
             echo "${krnl}-headers" >> "${scrDir}/install_pkg.lst"
@@ -117,8 +121,10 @@ EOF
     #----------------#
     # get user prefs #
     #----------------#
+    # 获取软件助手
     if ! chk_list "aurhlpr" "${aurList[@]}"; then
         echo -e "Available aur helpers:\n[1] yay\n[2] yay (bin)\n[3] paru\n[4] paru (bin)"
+
         prompt_timer 120 "Enter option number [default: yay] "
 
         case "${promptIn}" in
@@ -130,6 +136,10 @@ EOF
         esac
     fi
 
+    #----------------#
+    # get shell      #
+    #----------------#
+    # 获取shell
     if ! chk_list "myShell" "${shlList[@]}"; then
         echo -e "Select shell:\n[1] zsh\n[2] fish"
         prompt_timer 120 "Enter option number"
@@ -152,6 +162,7 @@ fi
 #---------------------------#
 # restore my custom configs #
 #---------------------------#
+# 重置配置
 if [ ${flg_Restore} -eq 1 ]; then
     cat << "EOF"
 
@@ -185,6 +196,7 @@ fi
 #---------------------#
 # post-install script #
 #---------------------#
+# 安装后脚本
 if [ ${flg_Install} -eq 1 ] && [ ${flg_Restore} -eq 1 ]; then
     cat << "EOF"
 
@@ -202,6 +214,7 @@ fi
 #------------------------#
 # enable system services #
 #------------------------#
+# 开启系统服务
 if [ ${flg_Service} -eq 1 ]; then
     cat << "EOF"
 
