@@ -1,3 +1,4 @@
+# zsh 插件
 git                                                     # alias and functions for git commands
 sudo                                                    # press ESC key twice to execute command with sudo prefix 
 #python                                                 # alias for python

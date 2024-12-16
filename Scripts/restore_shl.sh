@@ -3,7 +3,7 @@
 #|--/ /-| Script to configure shell |--/ /-|#
 #|-/ /--| Prasanth Rangan           |-/ /--|#
 #|/ /---+---------------------------+/ /---|#
-
+# shell 配置文件
 scrDir=$(dirname "$(realpath "$0")")
 source "${scrDir}/global_fn.sh"
 if [ $? -ne 0 ]; then
