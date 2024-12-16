@@ -3,7 +3,7 @@
 #|--/ /-| Script to patch custom theme |--/ /-|#
 #|-/ /--| kRHYME7                      |-/ /--|#
 #|/ /---+------------------------------+/ /---|#
-
+# 主题安装
 print_prompt() {
     [[ "${verbose}" == "false" ]] && return 0
     while (( "$#" )); do
