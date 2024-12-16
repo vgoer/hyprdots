@@ -9,7 +9,7 @@ io.gitlab.adhami3310.Impression                # Impression
 
 # ------------------------------------------- // Browser
 com.brave.Browser                              # Brave
-# org.torproject.torbrowser-launcher           # Tor
+org.torproject.torbrowser-launcher             # Tor
 
 # ------------------------------------------- // Social
 # org.signal.Signal                            # Signal
@@ -46,3 +46,7 @@ com.github.unrud.VideoDownloader               # VideoDownloader
 # hu.kramo.Cartridges                          # Cartridges
 # com.github.Matoking.protontricks             # ProtonTricks
 # net.davidotek.pupgui2                        # ProtonUp
+
+# ------------------------------------------- // Calculator
+it.mijorus.smile                               # smile
+org.gnome.Calculator                           # Calculator
